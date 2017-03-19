@@ -1,6 +1,6 @@
 {
-  "name": "promise-tools",
-  "version": "0.1.0",
+  "name": "promiseutils",
+  "version": "0.1.1",
   "description": "Set of function to handle an array or list of promises",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,7 @@
   },
   "keywords": [
     "Promise",
+    "promise-utils",
     "array",
     "list",
     "batch"
@@ -15,10 +16,8 @@
   "author": "Vasudevan PALANI",
   "license": "MIT",
   "dependencies": {
-    "asyncawait": "^1.0.6",
     "axios": "^0.15.3",
     "axios-debug-log": "^0.3.0",
-    "deferred": "^0.7.6",
     "lodash": "^4.17.4",
     "sleep": "^5.1.0"
   }
