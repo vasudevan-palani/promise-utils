@@ -28,6 +28,6 @@ var test = new TestUtils();
 
 var promiseList = test.getPromiseList();
 
-promisetools.returnFirstSuccess(promiseList).then(function(resp) {
+promisetools.firstSuccess(promiseList).then(function(resp) {
     console.log(resp);
 });

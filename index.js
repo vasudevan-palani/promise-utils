@@ -27,7 +27,7 @@ module.exports = {
 
         });
     },
-    returnFirstFailure: function(promiseList, options) {
+    firstFailure: function(promiseList, options) {
 
         let list = promiseList;
 
@@ -49,7 +49,7 @@ module.exports = {
 
         });
     },
-    returnFirstSuccess: function(promiseList, options) {
+    firstSuccess: function(promiseList, options) {
         let list = promiseList;
 
         let successlist = [];
