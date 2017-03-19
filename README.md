@@ -5,6 +5,28 @@ This project is aimed at providing utility functions in handling promises / arra
 ## Code Example
 
 ```
+// To sequence all the promises one after the another
+//
+//	- promises ( list of all promises )
+//	- options ( List of options, interval : seconds to wait before retry )
+//
+promiseutils.firstSuccess(promises,options).then(function(resp){
+    //Handle success
+}).catch(function(resp){
+    //Handle failure
+});
+
+// To sequence all the promises one after the another
+//
+//	- promises ( list of all promises )
+//	- options ( List of options, interval : seconds to wait before retry )
+//
+promiseutils.firstFailure(promises,options).then(function(resp){
+    //Handle success
+}).catch(function(resp){
+    //Handle failure
+});
+
 
 // To sequence all the promises one after the another
 //
@@ -38,7 +60,7 @@ To include this source in your nodejs application
 
 Step1 :
 ```
-- npm install promise-utils
+npm install promise-utils
 ```
 
 Step2 :
