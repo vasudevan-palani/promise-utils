@@ -37,7 +37,9 @@ promiseutils.retryUntilSuccess(arguments,promiseFn,options).then(function(resp){
 To include this source in your nodejs application
 
 Step1 :
+```
 - npm install promise-utils
+```
 
 Step2 :
 
