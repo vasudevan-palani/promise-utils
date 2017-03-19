@@ -1,9 +1,44 @@
-# promise-utils
-List of Utility functions when dealing with Javascript promise arrays
+## Synopsis
 
-echo "# promise-utils" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/vasudevan-palani/promise-utils.git
-git push -u origin master
+This project is aimed at providing utility functions in handling promises / array of promises.
+
+## Code Example
+
+To include this source in your nodejs application
+
+```
+promiseutils = require('promise-utils');
+```
+
+```
+promiseutils.retryUntilSuccess(arguments,promiseFn,options).then(function(resp){
+    //Handle success
+}).catch(function(resp){
+    //Handle failure
+});
+
+```
+
+## Motivation
+
+A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+
+## Installation
+
+Provide code examples and explanations of how to get the project.
+
+## API Reference
+
+Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+
+## Tests
+
+Describe and show how to run the tests with code examples.
+
+## Contributors
+
+Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+
+## License
+
+A short snippet describing the license (MIT, Apache, etc.)
