@@ -60,13 +60,13 @@ To include this source in your nodejs application
 
 Step1 :
 ```
-npm install promise-utils
+npm install promiseutils
 ```
 
 Step2 :
 
 ```
-promiseutils = require('promise-utils');
+promiseutils = require('promiseutils');
 ```
 
 ## License
