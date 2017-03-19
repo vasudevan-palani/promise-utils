@@ -17,6 +17,9 @@
   "dependencies": {
     "asyncawait": "^1.0.6",
     "axios": "^0.15.3",
+    "axios-debug-log": "^0.3.0",
+    "deferred": "^0.7.6",
+    "lodash": "^4.17.4",
     "sleep": "^5.1.0"
   }
 }

@@ -1,4 +1,5 @@
 var sleep = require('sleep');
+var lodash = require('lodash');
 
 module.exports = {
     all: function(promiseList, options) {
@@ -72,7 +73,74 @@ module.exports = {
         });
 
     },
-    retryUntilSuccess: function(promise, options) {
+    retryUntilSuccess: function(arguments,promisify, options) {
+        let maxretry = options.maxretry || 3;
+        let interval = options.interval || 5;
+
+        let count = 1;
+
+        return new Promise(function(resolve, reject) {
+
+            let kofn = function(resp) {
+                if (maxretry > count) {
+                    count ++ ;
+                    sleep.sleep(interval);
+                    let prom = promisify(arguments);
+                    prom.then(function(resp) {
+                        resolve(resp);
+                    }, kofn);
+                }
+                else {
+                    reject(options);
+                }
+            }
+
+            let prom = promisify(arguments);
+            prom.then(function(resp) {
+                resolve(resp);
+            }, kofn);
+        });
+    },
+    sequenceAll: function(variables, promisify, options) {
+
+        let list = lodash.clone(variables);
+
+
+        let successlist = [];
+        let rejectlist = [];
+
+        return new Promise(function(resolve, reject) {
+
+            let okfn = function(resp) {
+                successlist.push(resp);
+                if (successlist.length + rejectlist.length == list.length) {
+                    resolve({ 'success': successlist, 'fail': rejectlist });
+                } else {
+                    if (variables.length > 0) {
+                        let varItem = variables.splice(0, 1);
+                        let prom = promisify(varItem);
+                        prom.then(okfn, kofn);
+                    }
+                }
+            }
+
+            let kofn = function(resp) {
+                rejectlist.push(resp);
+                if (successlist.length + rejectlist.length == list.length) {
+                    resolve({ 'success': successlist, 'fail': rejectlist });
+                } else {
+                    if (variables.length > 0) {
+                        let varItem = variables.splice(0, 1);
+                        let prom = promisify(varItem);
+                        prom.then(okfn, kofn);
+                    }
+                }
+            }
+
+            let varItem = variables.splice(0, 1);
+            let prom = promisify(varItem);
+            prom.then(okfn, kofn);
+        });
 
     }
 }
