@@ -8,7 +8,7 @@ var zipcodes = [33025, 33178, 33123, 33078];
 
 function TestUtils() {
     this.getPromise = function(name) {
-        return axios.get("https://maps.googleapis.com/maps/api/geocode/json1?address=" + name);
+        return axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + name);
     }
     this.getPromiseList = function() {
         let promlist = [];
@@ -27,9 +27,21 @@ function TestUtils() {
 
 test = new TestUtils();
 
-promisetools.retryUntilSuccess(arguments,test.getPromise,{}).then(function(resp){
+
+//To seuqence all
+//
+promisetools.sequenceAll(zipcodes,test.getPromise,{}).then(function(resp){
     console.log(resp);
 }).catch(function(resp){
     console.log(resp);
 });
+
+
+// retryUntilSuccess Example
+//
+// promisetools.retryUntilSuccess(arguments,test.getPromise,{}).then(function(resp){
+//     console.log(resp);
+// }).catch(function(resp){
+//     console.log(resp);
+// });
 
