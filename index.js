@@ -118,7 +118,7 @@ module.exports = {
                 } else {
                     if (variables.length > 0) {
                         let varItem = variables.splice(0, 1);
-                        let prom = promisify(varItem);
+                        let prom = promisify(varItem[0]);
                         prom.then(okfn, kofn);
                     }
                 }
@@ -131,14 +131,14 @@ module.exports = {
                 } else {
                     if (variables.length > 0) {
                         let varItem = variables.splice(0, 1);
-                        let prom = promisify(varItem);
+                        let prom = promisify(varItem[0]);
                         prom.then(okfn, kofn);
                     }
                 }
             }
 
             let varItem = variables.splice(0, 1);
-            let prom = promisify(varItem);
+            let prom = promisify(varItem[0]);
             prom.then(okfn, kofn);
         });
 
