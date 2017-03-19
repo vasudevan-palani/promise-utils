@@ -1,0 +1,22 @@
+{
+  "name": "promise-tools",
+  "version": "0.1.0",
+  "description": "Set of function to handle an array or list of promises",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Promise",
+    "array",
+    "list",
+    "batch"
+  ],
+  "author": "Vasudevan PALANI",
+  "license": "MIT",
+  "dependencies": {
+    "asyncawait": "^1.0.6",
+    "axios": "^0.15.3",
+    "sleep": "^5.1.0"
+  }
+}
