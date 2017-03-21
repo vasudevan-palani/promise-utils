@@ -5,7 +5,7 @@ This project is aimed at providing utility functions in handling promises / arra
 ## Code Example
 
 ```
-// To sequence all the promises one after the another
+// To race to first successfuly promise
 //
 //	- promises ( list of all promises )
 //	- options ( List of options, interval : seconds to wait before retry )
@@ -16,7 +16,7 @@ promiseutils.race(promises,options).then(function(resp){
     //Handle failure
 });
 
-// To sequence all the promises one after the another
+// To race to first failed promise
 //
 //	- promises ( list of all promises )
 //	- options ( List of options, interval : seconds to wait before retry )
