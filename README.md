@@ -10,7 +10,7 @@ This project is aimed at providing utility functions in handling promises / arra
 //	- promises ( list of all promises )
 //	- options ( List of options, interval : seconds to wait before retry )
 //
-promiseutils.firstSuccess(promises,options).then(function(resp){
+promiseutils.race(promises,options).then(function(resp){
     //Handle success
 }).catch(function(resp){
     //Handle failure
@@ -21,7 +21,7 @@ promiseutils.firstSuccess(promises,options).then(function(resp){
 //	- promises ( list of all promises )
 //	- options ( List of options, interval : seconds to wait before retry )
 //
-promiseutils.firstFailure(promises,options).then(function(resp){
+promiseutils.raceToFail(promises,options).then(function(resp){
     //Handle success
 }).catch(function(resp){
     //Handle failure
@@ -34,7 +34,7 @@ promiseutils.firstFailure(promises,options).then(function(resp){
 //	- promiseFn ( This function will involved to get an instance of promise )
 //	- options ( List of options, interval : seconds to wait before retry )
 //
-promiseutils.sequenceAll(variables,promiseFn,options).then(function(resp){
+promiseutils.seq(variables,promiseFn,options).then(function(resp){
     //Handle success
 }).catch(function(resp){
     //Handle failure
@@ -46,7 +46,7 @@ promiseutils.sequenceAll(variables,promiseFn,options).then(function(resp){
 //	- promiseFn ( This function will involved to get an instance of promise )
 //	- options ( List of options, maxretry : number of retries, interval : seconds to wait before retry )
 //
-promiseutils.retryUntilSuccess(arguments,promiseFn,options).then(function(resp){
+promiseutils.retry(arguments,promiseFn,options).then(function(resp){
     //Handle success
 }).catch(function(resp){
     //Handle failure

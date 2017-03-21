@@ -28,7 +28,10 @@ module.exports = {
 
         });
     },
-    firstFailure: function(promiseList, options) {
+    raceToFail : function(promiseList, options) {
+        return this.firstFailure(promiseList, options);
+    },
+    firstFailure: function(promiseList, options) { // Retaining this name for backward
 
         let list = promiseList;
 
@@ -50,7 +53,10 @@ module.exports = {
 
         });
     },
-    firstSuccess: function(promiseList, options) {
+    race:function(promiseList, options) {
+        return this.firstSuccess(promiseList, options);
+    },
+    firstSuccess: function(promiseList, options) { // Retaining this name for backward
         let list = promiseList;
 
         let successlist = [];
@@ -73,7 +79,10 @@ module.exports = {
         });
 
     },
-    retryUntilSuccess: function(arguments,promisify, options) {
+    retry : function(variable,promisify, options) {
+        return this.retryUntilSuccess(variable,promisify, options);
+    },
+    retryUntilSuccess: function(variable,promisify, options) { // Retaining this name for backward
         let maxretry = options.maxretry || 3;
         let interval = options.interval || 5;
 
@@ -85,7 +94,7 @@ module.exports = {
                 if (maxretry > count) {
                     count ++ ;
                     sleep.sleep(interval);
-                    let prom = promisify(arguments);
+                    let prom = promisify(variable);
                     prom.then(function(resp) {
                         resolve(resp);
                     }, kofn);
@@ -95,13 +104,16 @@ module.exports = {
                 }
             }
 
-            let prom = promisify(arguments);
+            let prom = promisify(variable);
             prom.then(function(resp) {
                 resolve(resp);
             }, kofn);
         });
     },
-    sequenceAll: function(variables, promisify, options) {
+    seq: function(variables, promisify, options){
+        return this.sequenceAll(variables, promisify, options);
+    },
+    sequenceAll: function(variables, promisify, options) { // Retaining this name for backward
 
         let list = lodash.clone(variables);
 

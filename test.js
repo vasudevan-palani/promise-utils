@@ -30,18 +30,18 @@ test = new TestUtils();
 
 //To seuqence all
 //
-promisetools.sequenceAll(zipcodes,test.getPromise,{}).then(function(resp){
-    console.log(resp);
-}).catch(function(resp){
-    console.log(resp);
-});
-
-
-// retryUntilSuccess Example
-//
-// promisetools.retryUntilSuccess(arguments,test.getPromise,{}).then(function(resp){
+// promisetools.seq(zipcodes,test.getPromise,{}).then(function(resp){
 //     console.log(resp);
 // }).catch(function(resp){
 //     console.log(resp);
 // });
+
+
+// retryUntilSuccess Example
+//
+promisetools.retry("33025",test.getPromise,{}).then(function(resp){
+    console.log(resp);
+}).catch(function(resp){
+    console.log(resp);
+});
 
