@@ -5,10 +5,53 @@ This project is aimed at providing utility functions in handling promises / arra
 ## Code Example
 
 ```
+
+// To chain a bunch of promises see below example.
+//
+let getPromise1 = function(props) {
+    return new Promise(function(resolve, reject) {
+        axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + props.zipcode).then(function() {
+            resolve({ zipcode: '33178' });
+
+        }, function(resp) {
+            reject(resp);
+        });;
+    });
+}
+let getPromise2 = function(props) {
+    return new Promise(function(resolve, reject) {
+        axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + props.zipcode).then(function() {
+            resolve({ zipcode: '97658' });
+
+        }, function(resp) {
+            reject(resp);
+        });;
+    });
+}
+let getPromise3 = function(props) {
+    return new Promise(function(resolve, reject) {
+        axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + props.zipcode).then(function() {
+            resolve({ zipcode: '02345' });
+
+        }, function(resp) {
+            reject(resp);
+        });;
+    });
+}
+
+
+promisetools.chain({ zipcode: '33025' }, [getPromise1, getPromise2, getPromise3]).then(function(resp) {
+    console.log("RESOLVING");
+}).catch(function(resp) {
+    console.log(resp);
+});
+
+
 // To race to first successfuly promise
 //
 //	- promises ( list of all promises )
-//	- options ( List of options, interval : seconds to wait before retry )
+//	- options ( List of options for future use )
+//	returns the response of the first successful promise
 //
 promiseutils.race(promises,options).then(function(resp){
     //Handle success
@@ -19,7 +62,8 @@ promiseutils.race(promises,options).then(function(resp){
 // To race to first failed promise
 //
 //	- promises ( list of all promises )
-//	- options ( List of options, interval : seconds to wait before retry )
+//	- options ( List of options - for future use )
+//	returns the response of the first failed promise
 //
 promiseutils.raceToFail(promises,options).then(function(resp){
     //Handle success
@@ -33,6 +77,7 @@ promiseutils.raceToFail(promises,options).then(function(resp){
 //	- variables ( Array of variables , For each variable a promise will be created using promiseFn )
 //	- promiseFn ( This function will involved to get an instance of promise )
 //	- options ( List of options, interval : seconds to wait before retry )
+//	returns an array of all responses
 //
 promiseutils.seq(variables,promiseFn,options).then(function(resp){
     //Handle success
@@ -45,6 +90,7 @@ promiseutils.seq(variables,promiseFn,options).then(function(resp){
 //	- arguments ( The inputs required to create a promise )
 //	- promiseFn ( This function will involved to get an instance of promise )
 //	- options ( List of options, maxretry : number of retries, interval : seconds to wait before retry )
+//	returns the response of the successfull try
 //
 promiseutils.retry(arguments,promiseFn,options).then(function(resp){
     //Handle success
