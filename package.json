@@ -1,6 +1,6 @@
 {
   "name": "promiseutils",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Set of function to handle an array or list of promises",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "promise-utils",
     "array",
     "list",
-    "batch"
+    "batch",
+    "chain"
   ],
   "author": "Vasudevan PALANI",
   "license": "MIT",

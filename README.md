@@ -40,7 +40,7 @@ let getPromise3 = function(props) {
 }
 
 
-promisetools.chain({ zipcode: '33025' }, [getPromise1, getPromise2, getPromise3]).then(function(resp) {
+promiseutils.chain({ zipcode: '33025' }, [getPromise1, getPromise2, getPromise3]).then(function(resp) {
     console.log("RESOLVING");
 }).catch(function(resp) {
     console.log(resp);
