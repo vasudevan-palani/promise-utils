@@ -58,7 +58,7 @@ promiseutils.chain({ zipcode: '33025' }, [getPromise1, getPromise2, getPromise3]
 
 ```
 
-The below way is the standard behaviour of an array of promises with a race
+The standard behaviour of an array of promises with a race
 ```
 
 // To race to first successfuly promise
@@ -87,7 +87,7 @@ promiseutils.raceToFail(promises,options).then(function(resp){
 
 ```
 
-Below is a way where we can sequence a list of promises to be executed one after another.
+To sequence a list of promises to be executed one after another.
 
 ```
 
@@ -103,7 +103,11 @@ promiseutils.seq(variables,promiseFn,options).then(function(resp){
 }).catch(function(resp){
     //Handle failure
 });
+```
 
+To retry a promise a given number of times.
+
+```
 // To retry a promise a number of times
 //
 //	- arguments ( The inputs required to create a promise )
