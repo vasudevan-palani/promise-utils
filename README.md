@@ -4,6 +4,16 @@ This project is aimed at providing utility functions in handling promises / arra
 
 ## Code Example
 
+In the below example, we can see a way to chain multiple promises.  The promise chain behaves as follows
+
+1. Trigger the first promise with the input arguments.
+2. Output of first promise is merged with initial set of arguments
+3. Output of Step2, is given as input to second promise
+4. Output of second promoise is merged with initial set of arguments + output of first promise
+5. ...
+
+With the above method, we can effective solve simple workflows.
+
 ```
 
 // To chain a bunch of promises see below example.
@@ -46,6 +56,10 @@ promiseutils.chain({ zipcode: '33025' }, [getPromise1, getPromise2, getPromise3]
     console.log(resp);
 });
 
+```
+
+The below way is the standard behaviour of an array of promises with a race
+```
 
 // To race to first successfuly promise
 //
@@ -71,6 +85,11 @@ promiseutils.raceToFail(promises,options).then(function(resp){
     //Handle failure
 });
 
+```
+
+Below is a way where we can sequence a list of promises to be executed one after another.
+
+```
 
 // To sequence all the promises one after the another
 //

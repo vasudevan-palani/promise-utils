@@ -1,6 +1,6 @@
 {
   "name": "promiseutils",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Set of function to handle an array or list of promises",
   "main": "index.js",
   "scripts": {
